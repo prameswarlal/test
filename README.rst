@@ -12,7 +12,7 @@ Filebeat is a log data shipper which based on Logstash-Forwarder source code. It
 ===========
 Supported Tags
 ===========
-* Version - 5.0.0-alpha5 : [Dockerfile](https://github.com/prameswar/filebeat/blob/master/5.0/Dockerfile) Tag: latest
+* Version - 5.0.0-alpha5 : ` Dockerfile <https://github.com/prameswar/filebeat/blob/master/5.0/Dockerfile /> `  Tag: latest
 * hi
  
 
