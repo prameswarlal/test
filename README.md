@@ -1,51 +1,52 @@
-#Filebeat
+##Elasticsearch
 
-Filebeat is a log data shipper.  It ships log files either to Logstash for parsing or directly to Elasticsearch for indexing.
+Elasticsearch is a full-text search and analytics engine. It is a high scalable search engine. Read elasticsearch [Documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html) for more information.  
 
 
-#Supported Tags
+##Supported Tags
 
-Filebeat Version: 
-- 5.0.0-alpha5 : [Dockerfile](https://github.com/prameswar/filebeat/blob/master/5.0/Dockerfile) Tag: [latest](https://github.com/prameswar/filebeat/tree/master/5.0)
-- 1.2.3  : [Dockerfile](https://github.com/prameswar/filebeat/blob/master/1.2/Dockerfile) Tag: [1.2](https://github.com/prameswar/filebeat/tree/master/1.2)
-- 1.1.2  : [Dockerfile](https://github.com/prameswar/filebeat/blob/master/1.1/Dockerfile) Tag: [1.1](https://github.com/prameswar/filebeat/tree/master/1.1)
-- 1.0.1  : [Dockerfile](https://github.com/prameswar/filebeat/blob/master/1.0/Dockerfile)  Tag: [1.0](https://github.com/prameswar/filebeat/tree/master/1.0)
+Elasticsearch Version: 
+- 5.0.0-alpha5 : [Dockerfile](https://github.com/prameswar/elasticsearch/blob/master/5.0/Dockerfile) Tag: [latest](https://github.com/prameswar/elasticsearch/tree/master/5.0)
+- 2.3.5  : [Dockerfile](https://github.com/prameswar/elasticsearch/blob/master/2.3/Dockerfile) Tag: [2.3](https://github.com/prameswar/elasticsearch/tree/master/2.3)
+- 2.2.2  : [Dockerfile](https://github.com/prameswar/elasticsearch/blob/master/2.2/Dockerfile) Tag: [2.2](https://github.com/prameswar/elasticsearch/tree/master/2.2)
+- 2.1.2 : [Dockerfile](https://github.com/prameswar/elasticsearch/blob/master/2.1/Dockerfile)  Tag: [2.1](https://github.com/prameswar/elasticsearch/tree/master/2.1)
+- 2.0.2 : [Dockerfile](https://github.com/prameswar/elasticsearch/blob/master/2.0/Dockerfile) Tag: [2.0](https://github.com/prameswar/elasticsearch/tree/master/2.0)
 
 ## Installation
-Pull docker image from [Dockerhub](https://hub.docker.com/r/prameswar/filebeat/) using command 
+Pull docker image from [Dockerhub](https://hub.docker.com/r/prameswar/elasticsearch/) using command 
 
 ```
-docker pull prameswar/filebeat
+docker pull prameswar/elasticsearch
 ```
 Above command will install `latest` version.
 
 OR
 
-You can install older version of filebeat using tag.
+You can install older version of elasticsearch using tag.
 
 ```
-docker pull prameswar/filebeat:1.2
+docker pull prameswar/elasticsearch:2.3
 ```
 OR
 
-You can clone repository and build filebeat Dockerfile in your system.
+You can clone repository and build elasticsearch Dockerfile in your system.
 ```
-git clone https://github.com/prameswar/filebeat.git
-cd 1.2
+git clone https://github.com/prameswar/elasticsearch.git
+cd 2.3
 docker build .
 ```
-## Use filebeat
+## Use elasticsearch
 list docker images 
 ```
 docker images
 
 REPOSITORY                TAG                 IMAGE ID            CREATED             SIZE
-prameswar/filebeat        latest              b491dda413ec        8 days ago          235 MB
+prameswar/elasticsearch   latest              692d02c3b921        7 days ago          649.9 MB
 ```
 Login docker image
 ```
-docker run -d -ti --name filebeat b491dda413ec
-docker exec -ti filebeat /bin/bash
+docker run -d -ti --name elasticsearch 692d02c3b921
+docker exec -ti elasticsearch /bin/bash
 ```
 change `/etc/filebeat/filebeat.yml` according to your requirement 
 ```
