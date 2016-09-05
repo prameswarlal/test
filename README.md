@@ -1,53 +1,73 @@
-##Kibana
+##Logstash
 
-Kibana is an  analytics and visualization platform tool to visualize elasticsearch data. Data can be visualize in form of  charts, tables, and maps etc.
+Logstash is an open source data collection engine with real-time pipelining capabilities. Logstash can dynamically parse and ship data of different types inputs, filters, and outputs. It support more than 200 plugins. For more information Read [Logstash Documentation](https://www.elastic.co/guide/en/logstash/current/introduction.html)
 
 
 ##Supported Tags
 
-Kibana Version: 
-- 5.0.0-alpha5 : [Dockerfile](https://github.com/prameswar/kibana/blob/master/5.0/Dockerfile) Tag: [latest](https://github.com/prameswar/kibana/tree/master/5.0)
-- 4.5.4  : [Dockerfile](https://github.com/prameswar/kibana/blob/master/4.5/Dockerfile) Tag: [4.5](https://github.com/prameswar/kibana/tree/master/4.5)
-
+Logstash Version: 
+- 2.3.4-1 : [Dockerfile](https://github.com/prameswar/logstash/blob/master/2.3/Dockerfile) Tag: [latest](https://github.com/prameswar/logstash/tree/master/2.3)
+- 2.2.4-1  : [Dockerfile](https://github.com/prameswar/logstash/blob/master/2.2/Dockerfile) Tag: [2.2](https://github.com/prameswar/logstash/tree/master/2.2)
+- 2.1.3-1  : [Dockerfile](https://github.com/prameswar/logstash/blob/master/2.1/Dockerfile) Tag: [2.1](https://github.com/prameswar/logstash/tree/master/2.1)
+- 2.0.0-1  : [Dockerfile](https://github.com/prameswar/logstash/blob/master/2.0/Dockerfile)  Tag: [2.0](https://github.com/prameswar/logstash/tree/master/2.0)
 
 ## Installation
-Pull docker image from [Dockerhub](https://hub.docker.com/r/prameswar/kibana/) using command 
+Pull docker image from [Dockerhub](https://hub.docker.com/r/prameswar/logstash/) using command 
 
 ```
-docker pull prameswar/kibana
+docker pull prameswar/logstash
 ```
 Above command will install `latest` version.
 
 OR
 
-You can install older version of kibana using tag.
+You can install older version of Logstash using tag.
 
 ```
-docker pull prameswar/kibana:4.5
+docker pull prameswar/logstash:2.2
 ```
 OR
 
-You can clone repository and build kibana Dockerfile in your system.
+You can clone repository and build Logstash Dockerfile in your system.
 ```
-https://github.com/prameswar/kibana.git
-cd 4.5
+git clone https://github.com/prameswar/logstash.git 
+cd 2.3
 docker build .
 ```
-## Use kibana
+## Use Logstash
 list docker images 
 ```
 docker images
 
 REPOSITORY                TAG                 IMAGE ID            CREATED             SIZE
-prameswar/kibana          latest              1135b6dbcb49        7 days ago          356 MB
+prameswar/logstash        2.3                 19aa20a050c4        6 days ago          759 MB
 ```
 Login docker image
 ```
-docker run -d -ti --name kibana 1135b6dbcb49
-docker exec -ti kibana /bin/bash
+docker run -d -ti --name logstash 19aa20a050c4
+docker exec -ti logstash /bin/bash
 ```
-change `/etc/kibana/kibana.yml` for kibana configuration
-Browse Kibana Dashboard at http://localhost:5601
+add input, output and filter config file to  `/etc/logstash/conf.d/` 
+
+Sample input file 
+```
+input {
+  file {
+    type => "syslog"
+    path => ["/var/log/auth.log", "/var/log/syslog"]
+    start_position => beginning
+    sincedb_path => "/dev/null"
+  }
+}
+```
+Sample output file to push logs to elasticsearch
+```
+output {
+  elasticsearch {
+    hosts => "localhost"
+  }
+}
+```
 
 ## References
-- [Kibana Documentation](https://www.elastic.co/guide/en/kibana/current/introduction.html)
+- [Logstash Documentation](https://www.elastic.co/guide/en/logstash/current/introduction.html)
